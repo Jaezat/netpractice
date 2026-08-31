@@ -1,43 +1,81 @@
-# Wtf is subnetting?
+# NetPractice
 
-## IP adresses
+This project was created as part of the 42 curriculum by mariacos.
 
-- Phone number for each device.
-- It opens up communication.
-- ex: IPv4 address: 4 set of numbers, 4 "octets" 32 bits, 8 bits = 1 octet.
-- why most of the ip adresse start with 192.168.1? 
+## Description
 
+NetPractice is a hands-on introduction to computer networking basics. Through a set of 10 progressive exercises, the goal is to fix a broken network setup by correctly assigning IP addresses, subnet masks, and routing table entries so that all hosts can communicate as intended.
 
-## Subnet mask
+The project builds intuition around IP addressing, subnetting, and how routers and switches move traffic across a network.
 
-- 255.255.255.0
-- also 4 octets
-- if we have the octects 255 that means that the numbers in our IP adress will always stay the same in our network.
-- so if we have this ip adress:
-	```192.168.1
-- and the mask for it is:
-	```255.255.255.0``` -> that means that the first three octets will never change. 
-- on that sense, when we have a 0, that means that the number will change
-- Basically the last number since is the "host" number it will change depending of what device is assigned to.
+## Instructions
 
-#### Ok but what is the mask actually for?
-- Basicamente el masks sirve para entender que parte es el network portion y que parte es el host portion.
-- Para saber que parte es el street en donde se vive y que parte es la casa en donde viok exve
+### Accessing the training tool
 
+1. Download the exercise archive from the project page on the 42 intranet.
+2. Extract it and open `index.html` in your browser.
 
-#### Why do we have to know the network portion of the IP address?
-- El network portion of the IP adress es como la calle en donde viven los Ip adresses
-- En una area en donde estan todos conectados por el mismo router es muy propable que los ip addresses de los devices tengan el mismo network portion, pero el host cambie (el ultimo octet que pertenece digamos al numero de casa)
-- Pero que pasa si queremos enviar algo a un Ip adress que no esta en la misma calle y que tiene el netowrk portion totalmente diferente del nuestro?
-	- Lo que pasa en este caso es que no podemos conectar directamente con el device, al contrario de cuando tenemos devices que se comunican entre ellos porque estan en el mismo LAN (Local Area Network)
-	- De esta manera tienen que pasar a traves del Router (Default Gateway).
-- En el ultimo octet hay hasta 256 posibilidades conexion incluyendo 0, pero lo que no se dice/muestra es que hay dos IP addresses que estan reservados, que no puedo tocar y no puedo usar.
-- el primero es mi propio IP adress so:
-	- De todas las posibilidades, 192.168.1.0, este IP address nunca puedo tocar. 
-	- El segundo es: 192.168.1.255 este numero siempre esta reservado para el broadcast.
-		- El broadcast sirve para compartir abiertamente la informacion
-	- El tercero, es el router que guardamos tambien el espacio, asi que quiere decir que en realidad tenemos 253 espacios y no 256 
+### Working through the exercises
 
+The tool offers two modes:
 
+- **Training**, made up of 10 levels to go through in order.
+- **Evaluation**, made up of 3 levels drawn at random from levels 6 through 10.
 
+For each level:
 
+1. Fill in the editable fields until the network setup satisfies the level's requirements.
+2. Press **Check** to validate.
+3. Check the log panel at the bottom if something is off, it usually points to the mistake.
+4. Use **Get my config** to export your solution as a JSON file.
+5. Move on to the next level once it's validated.
+
+## Key Concepts
+
+**Network**: a set of interconnected hosts that exchange data. Networks can be split into smaller subnetworks or joined together into larger ones.
+
+**LAN (Local Area Network)**: devices connected within a small physical area (an office, a building), usually through a switch.
+
+**WAN (Wide Area Network)**: a network spanning large distances, linking multiple LANs through routers. The internet is the largest example of a WAN.
+
+**Internet**: the worldwide network of networks, all speaking the same TCP/IP protocol suite.
+
+**TCP/IP**: the protocol suite that governs how data is packaged, addressed, and routed between hosts.
+
+**IP address**: a unique identifier for a host on a network. In IPv4 it's a 32 bit number written as four decimal octets (e.g. `192.168.1.10`), split into a network part and a host part.
+
+A few things worth remembering:
+
+- The `127.x.x.x` range is reserved for loopback traffic.
+- The `10.x.x.x`, `172.16.x.x` to `172.31.x.x`, and `192.168.x.x` ranges are private and not routed on the public internet.
+- The lowest address in a subnet identifies the network itself.
+- The highest address in a subnet is the broadcast address.
+
+**Subnet mask**: paired with an IP address to define where the network part ends and the host part begins. It's written like an IP address, but as a run of 1 bits followed by 0 bits (e.g. `255.255.255.0`).
+
+**Router / Gateway**: a device that passes traffic between separate networks.
+
+**Routing table**: a list, kept by a router or host, of which gateway to use to reach a given destination network. A route of `0.0.0.0/0` is the catch all, used when nothing more specific matches.
+
+**Switch**: forwards traffic between devices on the same LAN based on MAC address.
+
+**The OSI model**: a 7 layer reference model for how networked communication is organized:
+
+1. Physical: raw bit transmission over the medium.
+2. Data Link: device to device delivery within one network segment.
+3. Network: routing between networks, based on IP addresses.
+4. Transport: reliable delivery, segmentation and reassembly.
+5. Session: setting up and tearing down connections.
+6. Presentation: formatting, encryption, compression.
+7. Application: the protocols apps actually use to talk to each other.
+
+## References
+
+- NetworkChuck: [Subnetting playlist on YouTube](https://www.youtube.com/watch?v=5WfiTHiU4x8&list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF)
+- Microsoft Learn: TCP/IP addressing and subnetting fundamentals
+- GeeksforGeeks: OSI Model overview
+- GeeksforGeeks: TCP/IP in networking
+
+## AI use
+
+AI was used to help clarify concepts related to network and subnet masks. 
